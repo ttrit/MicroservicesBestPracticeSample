@@ -6,11 +6,9 @@ namespace ApiSample.Repositories
 {
     public class WeatherDbContext : DbContext
     {
-        private readonly IOptions<DatabaseSettings> _databaseOptions;
-
-        public WeatherDbContext(IOptions<DatabaseSettings> databaseOptions)
+        public WeatherDbContext(DbContextOptions<WeatherDbContext> options)
+            : base(options)
         {
-            _databaseOptions = databaseOptions;
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -20,9 +18,6 @@ namespace ApiSample.Repositories
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = _databaseOptions.Value.ConnectionString;
-
-            optionsBuilder.UseSqlServer(connectionString);
         }
 
         public DbSet<Weather> Weathers { get; set; }
