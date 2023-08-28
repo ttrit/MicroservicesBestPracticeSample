@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  apisample:
+    image: ${DOCKER_REGISTRY-}apisample
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+  database:
+    image: postgres:lastest
+    container_name: Database
+    environment:
+      - POSTGRES_DB=projectsetup-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./.containers/database:/var/lib/postgresql/data
+    ports:
+      - 5432:5432    
