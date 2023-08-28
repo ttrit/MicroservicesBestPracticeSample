@@ -1,6 +1,8 @@
 using ApiSample;
 using ApiSample.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Scrutor;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +14,17 @@ builder.Services.Configure<DatabaseSettings>(
 builder.Services.AddDbContext<WeatherDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Database")));
 
-builder.Services.AddScoped<IWeatherRepository, WeatherRepository>();
+builder
+    .Services
+    .Scan(
+        selector => selector
+            .FromAssemblies(
+                Assembly.GetExecutingAssembly()
+            )
+            .AddClasses(false)
+            .UsingRegistrationStrategy(RegistrationStrategy.Skip)
+            .AsMatchingInterface()
+            .WithScopedLifetime());
 
 builder.Services.AddStackExchangeRedisCache(redisOptions =>
 {
