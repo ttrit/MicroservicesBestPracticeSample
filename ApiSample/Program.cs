@@ -1,5 +1,6 @@
 using MCR.App;
 using MCR.App.Configuration;
+using Microsoft.Extensions.Options;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<DatabaseSettings>(
     builder.Configuration.GetSection(nameof(DatabaseSettings)));
+builder.Services.AddOptions<OutboxSettings>()
+    .BindConfiguration("Outbox")
+    .ValidateDataAnnotations()
+    .ValidateOnStart();
+builder.Services.AddSingleton(sp =>
+    sp.GetRequiredService<IOptions<OutboxSettings>>().Value);
 
 builder.Services
     .AddCaching(builder.Configuration)

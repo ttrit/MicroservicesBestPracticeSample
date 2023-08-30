@@ -1,6 +1,6 @@
 ﻿namespace MCR.App
 {
-    public class DatabaseSettings
+    public sealed class DatabaseSettings
     {
         public string? ConnectionString { get; set; }
     }
