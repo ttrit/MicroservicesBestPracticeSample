@@ -1,9 +1,9 @@
-﻿using ApiSample.Models;
+﻿using MCR.App.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 using System.Text.Json;
 
-namespace ApiSample.Repositories
+namespace MCR.App.Repositories
 {
     public interface IWeatherRepository
     {

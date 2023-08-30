@@ -6,7 +6,7 @@
     <ProjectGuid>936065af-520f-4bfe-8e59-2dca14e4adbe</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://{ServiceIPAddress}{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>apisample</DockerServiceName>
+    <DockerServiceName>MCR.App</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

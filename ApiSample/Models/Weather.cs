@@ -1,4 +1,4 @@
-﻿namespace ApiSample.Models
+﻿namespace MCR.App.Models
 {
     public class Weather
     {

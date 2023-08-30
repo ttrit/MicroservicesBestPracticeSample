@@ -1,9 +1,6 @@
-using ApiSample;
-using ApiSample.Repositories;
-using Microsoft.EntityFrameworkCore;
-using Scrutor;
+using MCR.App;
+using MCR.App.Configuration;
 using Serilog;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,28 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<DatabaseSettings>(
     builder.Configuration.GetSection(nameof(DatabaseSettings)));
 
-builder.Services.AddDbContext<WeatherDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Database")));
-
-builder
-    .Services
-    .Scan(
-        selector => selector
-            .FromAssemblies(
-                Assembly.GetExecutingAssembly()
-            )
-            .AddClasses(false)
-            .UsingRegistrationStrategy(RegistrationStrategy.Skip)
-            .AsMatchingInterface()
-            .WithScopedLifetime());
-
-builder.Services.AddStackExchangeRedisCache(redisOptions =>
-{
-    string connection = builder.Configuration
-        .GetConnectionString("Redis");
-
-    redisOptions.Configuration = connection;
-});
+builder.Services
+    .AddCaching(builder.Configuration)
+    .AddInfrastructure(builder.Configuration)
+    .AddApplication();
 
 builder.Host.UseSerilog((context, configuration) =>
     configuration.ReadFrom.Configuration(context.Configuration));

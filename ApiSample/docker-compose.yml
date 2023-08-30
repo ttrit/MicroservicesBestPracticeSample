@@ -1,8 +1,8 @@
 version: '3.4'
 
 services:
-  apisample:
-    image: ${DOCKER_REGISTRY-}apisample
+  MCR.App:
+    image: ${DOCKER_REGISTRY-}MCR.App
     build:
       context: .
       dockerfile: Dockerfile

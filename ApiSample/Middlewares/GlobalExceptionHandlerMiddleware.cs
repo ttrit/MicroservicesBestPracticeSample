@@ -2,7 +2,7 @@
 using System.Net;
 using System.Text.Json;
 
-namespace ApiSample.Middlewares
+namespace MCR.App.Middlewares
 {
     public class GlobalExceptionHandlerMiddleware : IMiddleware
     {

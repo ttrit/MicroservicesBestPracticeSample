@@ -1,4 +1,4 @@
-namespace ApiSample
+namespace MCR.App
 {
     public class WeatherForecast
     {

@@ -3,9 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiSample", "ApiSample.csproj", "{88969787-3AA1-480A-82BB-F032F6A70679}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MCR.App", "MCR.App.csproj", "{88969787-3AA1-480A-82BB-F032F6A70679}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{936065AF-520F-4BFE-8E59-2DCA14E4ADBE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MCR.Application", "..\MCR.Application\MCR.Application.csproj", "{EAE72D83-E355-4A71-938A-4C5B32C551AC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MCR.Domain", "..\MCR.Domain\MCR.Domain.csproj", "{91C3544A-063F-45E5-9517-F639B2D938C7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MCR.Infrastructure", "..\MCR.Infrastructure\MCR.Infrastructure.csproj", "{A335FE27-78CC-4AE1-8870-97662FFEE3AB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MCR.Persistence", "..\MCR.Persistence\MCR.Persistence.csproj", "{69B70179-CBFB-4454-B8CC-D7A3D12270BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +29,22 @@ Global
 		{936065AF-520F-4BFE-8E59-2DCA14E4ADBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{936065AF-520F-4BFE-8E59-2DCA14E4ADBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{936065AF-520F-4BFE-8E59-2DCA14E4ADBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAE72D83-E355-4A71-938A-4C5B32C551AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAE72D83-E355-4A71-938A-4C5B32C551AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAE72D83-E355-4A71-938A-4C5B32C551AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAE72D83-E355-4A71-938A-4C5B32C551AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91C3544A-063F-45E5-9517-F639B2D938C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91C3544A-063F-45E5-9517-F639B2D938C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91C3544A-063F-45E5-9517-F639B2D938C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91C3544A-063F-45E5-9517-F639B2D938C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A335FE27-78CC-4AE1-8870-97662FFEE3AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A335FE27-78CC-4AE1-8870-97662FFEE3AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A335FE27-78CC-4AE1-8870-97662FFEE3AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A335FE27-78CC-4AE1-8870-97662FFEE3AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69B70179-CBFB-4454-B8CC-D7A3D12270BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69B70179-CBFB-4454-B8CC-D7A3D12270BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69B70179-CBFB-4454-B8CC-D7A3D12270BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69B70179-CBFB-4454-B8CC-D7A3D12270BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

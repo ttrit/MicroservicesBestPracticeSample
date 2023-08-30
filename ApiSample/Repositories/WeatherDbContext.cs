@@ -1,8 +1,8 @@
-﻿using ApiSample.Models;
+﻿using MCR.App.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
-namespace ApiSample.Repositories
+namespace MCR.App.Repositories
 {
     public class WeatherDbContext : DbContext
     {
