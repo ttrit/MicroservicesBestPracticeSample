@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MCR.Infrastructure", "..\MC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MCR.Persistence", "..\MCR.Persistence\MCR.Persistence.csproj", "{69B70179-CBFB-4454-B8CC-D7A3D12270BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionApp1", "..\FunctionApp1\FunctionApp1.csproj", "{AA598474-F8A4-437C-B48F-25AC22C453CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{69B70179-CBFB-4454-B8CC-D7A3D12270BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69B70179-CBFB-4454-B8CC-D7A3D12270BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69B70179-CBFB-4454-B8CC-D7A3D12270BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA598474-F8A4-437C-B48F-25AC22C453CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA598474-F8A4-437C-B48F-25AC22C453CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA598474-F8A4-437C-B48F-25AC22C453CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA598474-F8A4-437C-B48F-25AC22C453CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
