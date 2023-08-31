@@ -1,7 +1,11 @@
-using MCR.App;
+using MassTransit;
+using MCR.App.Abstractions.EventBus;
 using MCR.App.Configuration;
+using MCR.App.Consumers;
+using MCR.App.Settings;
 using Microsoft.Extensions.Options;
 using Serilog;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +19,35 @@ builder.Services.AddOptions<OutboxSettings>()
     .ValidateOnStart();
 builder.Services.AddSingleton(sp =>
     sp.GetRequiredService<IOptions<OutboxSettings>>().Value);
+
+builder.Services.AddOptions<MessageBrokerSettings>()
+    .BindConfiguration("MessageBroker");
+builder.Services.AddSingleton(sp =>
+    sp.GetRequiredService<IOptions<MessageBrokerSettings>>().Value);
+
+builder.Services.AddTransient<IEventBus, EventBus>();
+builder.Services.AddMediatR(new MediatRServiceConfiguration
+{
+    
+});
+
+builder.Services.AddMassTransit(busConfigurator =>
+{
+    busConfigurator.SetKebabCaseEndpointNameFormatter();
+
+    busConfigurator.AddConsumer<ProductCreatedEventConsumer>();
+
+    busConfigurator.UsingRabbitMq((context, configurator) =>
+    {
+        MessageBrokerSettings settings = context.GetRequiredService<MessageBrokerSettings>();
+
+        configurator.Host(new Uri(settings.Host), h =>
+        {
+            h.Username(settings.Username);
+            h.Password(settings.Password);
+        });
+    });
+});
 
 builder.Services
     .AddCaching(builder.Configuration)

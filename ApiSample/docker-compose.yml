@@ -17,4 +17,14 @@ services:
     volumes:
       - ./.containers/database:/var/lib/postgresql/data
     ports:
-      - 5432:5432    
+      - 5432:5432
+  messagequeue:
+    image: rabbitmq:3.11.7-management
+    container_name: Queue
+    hostname: rbqueue
+    volumes:
+      - ./.containers/queue/data/:/var/lib/rabbitmq
+      - ./.containers/queue/log/:/var/log/rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest

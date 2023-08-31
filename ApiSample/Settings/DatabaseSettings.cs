@@ -1,4 +1,4 @@
-﻿namespace MCR.App
+﻿namespace MCR.App.Settings
 {
     public sealed class DatabaseSettings
     {

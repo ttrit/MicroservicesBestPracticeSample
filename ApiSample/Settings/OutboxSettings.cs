@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MCR.App
+namespace MCR.App.Settings
 {
     public class OutboxSettings
     {
