@@ -1,0 +1,16 @@
+public class RunEfMigrationsBackgroundTask : BackgroundService
+{
+    private readonly WeatherDbContext _context;
+
+    public RunEfMigrationsBackgroundTask(
+        WeatherDbContext context)
+    {
+        _serviceProvider = serviceProvider;
+        _context = context;
+    }
+
+    protected override async Task ExecuteAsync(CancellationToken cancellationToken)
+    {
+        await _context.Database.MigrateAsync(cancellationToken);
+    }
+}
