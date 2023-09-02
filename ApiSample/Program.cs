@@ -54,6 +54,9 @@ builder.Services
     .AddInfrastructure(builder.Configuration)
     .AddApplication();
 
+builder.Services.AddSingleton<ApiKeyAuthorizationFilter>();
+builder.Services.AddSingleton<IApiKeyValidator, ApiKeyValidator>();
+
 builder.Host.UseSerilog((context, configuration) =>
     configuration.ReadFrom.Configuration(context.Configuration));
 

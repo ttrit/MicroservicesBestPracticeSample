@@ -18,6 +18,7 @@ namespace MCR.App.Controllers
             _logger = logger;
         }
 
+        [ApiKey]
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
