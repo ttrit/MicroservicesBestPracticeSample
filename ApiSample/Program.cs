@@ -57,6 +57,8 @@ builder.Services
 builder.Services.AddSingleton<ApiKeyAuthorizationFilter>();
 builder.Services.AddSingleton<IApiKeyValidator, ApiKeyValidator>();
 
+builder.Services.AddKeycloakAuthentication(builder.Configuration);
+
 builder.Host.UseSerilog((context, configuration) =>
     configuration.ReadFrom.Configuration(context.Configuration));
 
@@ -67,6 +69,16 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddLogging();
 
+builder.Services.AddAuthorization(options =>
+    {
+        options.AddPolicy("RequireWorkspaces", builder =>
+        {
+            builder.RequireProtectedResource("workspaces", "workspaces:read")
+                .RequireRealmRoles("User")
+                .RequireResourceRoles("Admin");
+        });
+    })
+    .AddKeycloakAuthorization(builder.Configuration);
 
 var app = builder.Build();
 
@@ -79,6 +91,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
