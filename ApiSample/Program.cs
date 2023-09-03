@@ -5,6 +5,7 @@ using MCR.App.Abstractions.EventBus;
 using MCR.App.Configuration;
 using MCR.App.Consumers;
 using MCR.App.Settings;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.Extensions.Options;
 using Serilog;
 
@@ -63,6 +64,19 @@ builder.Services.AddKeycloakAuthentication(builder.Configuration);
 builder.Host.UseSerilog((context, configuration) =>
     configuration.ReadFrom.Configuration(context.Configuration));
 
+builder.Services.AddRateLimiter(rateLimiterOptions =>
+{
+    rateLimiterOptions.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+
+    rateLimiterOptions.AddTokenBucketLimiter("token", options =>
+    {
+        options.TokenLimit = 1000;
+        options.ReplenishmentPeriod = TimeSpan.FromHours(1);
+        options.TokensPerPeriod = 700;
+        options.AutoReplenishment = true;
+    });
+});
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -94,6 +108,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseRateLimiter();
 
 app.MapControllers();
 
