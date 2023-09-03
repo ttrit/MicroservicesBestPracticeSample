@@ -1,3 +1,5 @@
+using Keycloak.AuthServices.Authentication;
+using Keycloak.AuthServices.Authorization;
 using MassTransit;
 using MCR.App.Abstractions.EventBus;
 using MCR.App.Configuration;
@@ -5,7 +7,6 @@ using MCR.App.Consumers;
 using MCR.App.Settings;
 using Microsoft.Extensions.Options;
 using Serilog;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +29,7 @@ builder.Services.AddSingleton(sp =>
 builder.Services.AddTransient<IEventBus, EventBus>();
 builder.Services.AddMediatR(new MediatRServiceConfiguration
 {
-    
+
 });
 
 builder.Services.AddMassTransit(busConfigurator =>

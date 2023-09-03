@@ -13,6 +13,9 @@
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.7.1" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.7.1" />
+    <PackageReference Include="MassTransit" Version="8.1.0" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.1.0" />
+    <PackageReference Include="MediatR" Version="12.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.10" />
@@ -30,7 +33,6 @@
 
   <ItemGroup>
     <None Include="D:\Coding Projects\MicroservicesBestPracticeSample\MCR.App\.editorconfig" />
-    <None Include="MCR.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

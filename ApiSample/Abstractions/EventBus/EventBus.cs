@@ -7,7 +7,7 @@ namespace MCR.App.Abstractions.EventBus
         private readonly IPublishEndpoint _publishEndpoint;
 
         public EventBus(IPublishEndpoint publishEndpoint)
-        {   
+        {
             _publishEndpoint = publishEndpoint;
         }
 
