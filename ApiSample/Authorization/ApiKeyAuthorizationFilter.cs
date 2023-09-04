@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+
 public class ApiKeyAuthorizationFilter : IAuthorizationFilter
 {
     private const string ApiKeyHeaderName = "X-API-Key";
